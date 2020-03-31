@@ -1,25 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import './App.scss';
 
-function App() {
+const App = ({initialAge = 0}) => {/*
+
+      Valor      Função para atualização
+          |      |                   ___ Valor padrão 
+          ↓      ↓                  ↓                     */
+  const [age, setAge] = useState(initialAge);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <button onClick={() => setAge(age - 1)}>-</button>
+      <input type="text" value={age} />
+      <button onClick={() => setAge(age + 1)}>+</button>
+
+      <p><button onClick={() => setAge(initialAge)}>Reset</button></p>
+    </>
   );
 }
 
